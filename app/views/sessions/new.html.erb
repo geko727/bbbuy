@@ -2,14 +2,18 @@
     <h1>Bbbuy Coupons</h1>
   </div>
 <div class="body">
-  <%= form_for(:series) do |f| %>
+  <%= form_for(:sesionss) do |f| %>
 
     <div class="field">
       <%= label :email, "email" %><br>
       <%= text_field :email, "email" %>
     </div>
+    <div class="field">
+      <%= label :password, "password" %><br>
+      <%= text_field :password, "password" %>
+    </div>
     <div class="actions">
-      <%= f.submit "send"%>
+      <%= f.submit "sign in"%>
     </div>
   <% end %>
 </div>

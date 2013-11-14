@@ -1,8 +1,9 @@
 Bbbuy::Application.routes.draw do
   resources :series
+  resources :sessions, only:[:create]
 
   post 'series/new', to: 'series#create'
-
+  get '/', to: "sessions#new"
   get '/email', to: 'series#emailpage'
   post '/email', to: 'series#email'
   # The priority is based upon order of creation: first created -> highest priority.
