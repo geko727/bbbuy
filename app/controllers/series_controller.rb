@@ -21,6 +21,8 @@ class SeriesController < ApplicationController
   def show
   end
 
+  def activate
+  end
   # GET /series/new
   def new
     @series = Serie.new

@@ -6,6 +6,7 @@ Bbbuy::Application.routes.draw do
   get '/', to: "sessions#new"
   get 'sign_out', to: 'sessions#destroy'
   get '/email', to: 'series#emailpage'
+  get '/activate', to: 'series#activate'
   post '/email', to: 'series#email'
   post '/', to: "sessions#create"
   # The priority is based upon order of creation: first created -> highest priority.

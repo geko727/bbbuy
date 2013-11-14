@@ -3,6 +3,7 @@
 <%@cup.touch(:sent)%>
 <%@cup.update_column(:recipient, @email) %>
 <h1> This is your Coupon: <%= @cup.serial%> </h1>
+<%= link_to "Activate it!!!", "http://localhost:3000/activate" %>
 <%else%>
 <h1> No more Coupons </h1>
 <%end%>
