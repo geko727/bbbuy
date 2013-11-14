@@ -27,7 +27,7 @@
         <td><%= series.value %></td>
         <td><%= series.currency %></td>
         <td><%= series.coupons.count %></td>
-        <td><%= series.coupons.count %></td>
+        <td><%= series.coupons.where(sent: nil).count %></td>
       </tr>
     <% end %>
   </tbody>

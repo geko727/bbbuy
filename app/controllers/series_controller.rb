@@ -11,7 +11,8 @@ class SeriesController < ApplicationController
   end
 
   def email
-    AppMailer.send_coupon_email(params[:email][:email]).deliver
+    @coup = Serie.last
+    AppMailer.send_coupon_email(params[:email][:email], @coup).deliver
   end
 
   # GET /series/1
@@ -41,7 +42,7 @@ class SeriesController < ApplicationController
         @new.each do |x|
         Coupon.create :serial => x, :serie_id => @series.id 
         end
-        AppMailer.send_welcome_email(@series).deliver
+        
         format.html { redirect_to @series, notice: 'Serie was successfully created.' }
         format.json { render action: 'show', status: :created, location: @series }
       else
