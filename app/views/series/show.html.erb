@@ -1,19 +1,30 @@
-<p id="notice"><%= notice %></p>
+<h1>Serie <%= @series.name%></h1>
 
-<p>
-  <strong>Name:</strong>
-  <%= @series.name %>
-</p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Sent</th>
+      <th>Delivered</th>
+      <th>Recipient</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
 
-<p>
-  <strong>Value:</strong>
-  <%= @series.value %>
-</p>
+  <tbody>
+    <% @series.coupons.each do |coupon| %>
+      <tr>
+        <td><%= coupon.serial %></td>
+        <td><%= coupon.sent %></td>
+        <td><%= coupon.delivered %></td>
+        <td><%= coupon.recipient %></td>      
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<p>
-  <strong>Currency:</strong>
-  <%= @series.currency %>
-</p>
+<br>
 
-<%= link_to 'Edit', edit_series_path(@series) %> |
-<%= link_to 'Back', series_path %>
+<%= link_to 'Back', series_index_path %>

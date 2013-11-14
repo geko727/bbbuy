@@ -29,7 +29,12 @@ class SeriesController < ApplicationController
 
     respond_to do |format|
       if @series.save
-        Coupon.create :serial => params[:series][:allcoupons], :serie_id => @series.id
+        @allcoup = params[:allcoupons][:allcoupons]
+        @new = @allcoup.split(/\n/)
+        @new.each do |x|
+        Coupon.create :serial => x, :serie_id => @series.id 
+        end
+        
         format.html { redirect_to @series, notice: 'Serie was successfully created.' }
         format.json { render action: 'show', status: :created, location: @series }
       else
