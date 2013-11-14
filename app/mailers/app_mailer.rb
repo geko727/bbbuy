@@ -1,0 +1,6 @@
+class AppMailer < ActionMailer::Base
+	def send_coupon_email(email)
+		@email = email
+		mail to: @email, from: 'coupons@bbbuy.com', subject: "Your Coupon"
+	end
+end

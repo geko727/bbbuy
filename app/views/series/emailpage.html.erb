@@ -1,0 +1,10 @@
+<%= form_for(:series) do |f| %>
+
+  <div class="field">
+    <%= label :email, "email" %><br>
+    <%= text_field :email, "email" %>
+  </div>
+  <div class="actions">
+    <%= f.submit "send"%>
+  </div>
+<% end %>
