@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  serial: MyString
+  sent: 2013-11-13 20:48:28
+  delivered: 2013-11-13 20:48:28
+  recipient: MyString
+  serie_id: 
+
+two:
+  serial: MyString
+  sent: 2013-11-13 20:48:28
+  delivered: 2013-11-13 20:48:28
+  recipient: MyString
+  serie_id: 
