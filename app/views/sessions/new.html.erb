@@ -1,19 +1,11 @@
-<div class='header'>
-    <h1>Bbbuy Coupons</h1>
-  </div>
-<div class="body">
-  <%= form_for(:sesions) do |f| %>
+<h5>Login</h5>
 
-    <div class="field">
-      <%= label :email, "email" %><br>
-      <%= text_field :email, "email" %>
-    </div>
-    <div class="field">
-      <%= label :password, "password" %><br>
-      <%= text_field :password, "password" %>
-    </div>
-    <div class="actions">
-      <%= f.submit "sign in"%>
-    </div>
-  <% end %>
-</div>
+<%= form_tag '/sessions' do %>
+        <%= label_tag :email %>
+        <%= text_field_tag :email %>
+        </br>
+        <%= label_tag :password %>
+        <%= password_field_tag :password %>
+        </br>
+        <%= submit_tag "Login", class: 'btn btn-primary' %>
+<% end %>

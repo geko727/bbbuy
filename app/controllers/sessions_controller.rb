@@ -3,9 +3,11 @@ class SessionsController < ApplicationController
 	end
 
 	def create 
+
 		user = User.where(email: params[:email]).first
+		
 		if user && user.authenticate(params[:password])
-			session[:user_id] = user.user_id
+			session[:user_id] = user.id
 			redirect_to series_index_path, notice: "You are signed in"
 		else
 			
@@ -15,7 +17,7 @@ class SessionsController < ApplicationController
 
 	def destroy 
 		session[:user_id] = nil
-		redirect_to root_path, notice: "You are signed out."
+		redirect_to "/"
 	end
 
 end		
