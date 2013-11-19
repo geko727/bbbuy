@@ -67,7 +67,7 @@ Bbbuy::Application.configure do
   :port           => 587, 
   :address        => 'smtp.gmail.com',
   :user_name      => 'bbbuy.codecery@gmail.com',
-  :password       => 'bbbuy.codecery',
+  :password       => 'bbbuy123',
   :authentication => :plain,
    enable_starttls_auto: true }
 
