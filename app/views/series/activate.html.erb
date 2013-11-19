@@ -1,2 +1,4 @@
+<% @coupon = Coupon.find(params[:id]) %>
 
+<% @coupon.touch(:delivered)%>
 <h1> Coupon Activated </h1>

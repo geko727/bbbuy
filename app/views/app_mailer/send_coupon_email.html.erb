@@ -3,7 +3,7 @@
 <%@cup.touch(:sent)%>
 <%@cup.update_column(:recipient, @email) %>
 <h1> This is your Coupon: <%= @cup.serial%> </h1>
-<%= link_to "Activate it!!!", "http://serene-cliffs-7596.herokuapp.com/activate" %>
+<%= link_to "Activate it!!!", activate_url(:id => @cup.id) %>
 
 <%else%>
 <h1> No more Coupons </h1>
