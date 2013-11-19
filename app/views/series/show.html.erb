@@ -1,8 +1,13 @@
 <h1>Serie <%= @series.name%></h1>
 
+<p>
+  <%= link_to "Exportar", series_path(format: "xls") %>
+</p>
+
 <table class='table'>
   <thead>
     <tr>
+      <th>Serie</th>
       <th>Name</th>
       <th>Sent</th>
       <th>Delivered</th>
@@ -16,6 +21,7 @@
   <tbody>
     <% @series.coupons.each do |coupon| %>
       <tr>
+        <td><%= coupon.serie.name %></td>
         <td><%= coupon.serial %></td>
         <td><%= coupon.sent %></td>
         <td><%= coupon.delivered %></td>

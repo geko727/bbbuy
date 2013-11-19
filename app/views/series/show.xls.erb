@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Serie</Data></Cell>
+        <Cell><Data ss:Type="String">Name</Data></Cell>
+        <Cell><Data ss:Type="String">Sent</Data></Cell>
+        <Cell><Data ss:Type="String">Delivered</Data></Cell>
+        <Cell><Data ss:Type="String">Recipient</Data></Cell>
+      </Row>
+    <% @series.coupons.each do |coupon| %>
+      <Row>
+        <Cell><Data ss:Type="String"><%= coupon.serie.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= coupon.serial %></Data></Cell>
+        <Cell><Data ss:Type="Time"><%= coupon.sent %></Data></Cell>
+        <Cell><Data ss:Type="Time"><%= coupon.delivered %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= coupon.recipient %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>
+

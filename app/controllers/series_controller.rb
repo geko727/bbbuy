@@ -19,6 +19,11 @@ class SeriesController < ApplicationController
   # GET /series/1
   # GET /series/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.csv { send_data @series.to_csv }
+      format.xls # { send_data @products.to_csv(col_sep: "\t") }
+    end
   end
 
   def activate
@@ -43,6 +48,8 @@ class SeriesController < ApplicationController
         @allcoup = params[:allcoupons][:allcoupons]
         @new = @allcoup.split(/\n/)
         @new.each do |x|
+        x = x.gsub(/\r/," ")
+        x = x.gsub(/\n/," ")
         Coupon.create :serial => x, :serie_id => @series.id 
         end
         
