@@ -9,10 +9,11 @@ class SeriesController < ApplicationController
   end
 
   def emailpage
+    @series = Serie.all
   end
 
   def email
-    @coup = Serie.last
+    @coup = Serie.find_by_name(params[:series][:name])
     AppMailer.send_coupon_email(params[:email][:email], @coup).deliver
   end
 

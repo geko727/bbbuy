@@ -13,6 +13,10 @@
       <%= label :email, "email" %></br>
       <%= email_field :email, "email", :class=>"form-control"%>
     </div>
+    <div class="field">
+      <%= f.label :series , "Choose a Serie", :class=>"h4"%><br>
+      <%= f.select :name, options_from_collection_for_select(@series, "name", "name"), :class=>"form-control", :id=>"emailtext"%>
+    </div>
     <div class="actions">
       <%= f.submit "send", :class => "btn btn-primary" %>
     </div>
