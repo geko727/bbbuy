@@ -97,4 +97,6 @@ class SeriesController < ApplicationController
     def series_params
       params.require(:series).permit(:name, :value, :currency)
     end
+
+
 end

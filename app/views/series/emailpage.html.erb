@@ -1,15 +1,20 @@
-<div class='header'>
+<div class='header' align="center">
     <h1>Bbbuy Coupons</h1>
-  </div>
-<div class="body">
+</div>
+
+<div align="center" id="divemailimage">
+  <img id="emailimage" src="http://entrepadres.imujer.com/sites/entrepadres.imujer.com/files/Dibujos-para-bebes-recien-nacidos-14.jpg" class="img-thumbnail" />
+</div>
+
+<div class="body" align="center" id="emailform">
   <%= form_for(:series) do |f| %>
 
     <div class="field">
-      <%= label :email, "email" %><br>
-      <%= text_field :email, "email" %>
+      <%= label :email, "email" %></br>
+      <%= email_field :email, "email", :class=>"form-control"%>
     </div>
     <div class="actions">
-      <%= f.submit "send"%>
+      <%= f.submit "send", :class => "btn btn-primary" %>
     </div>
   <% end %>
 </div>

@@ -37,7 +37,24 @@ html {
       -ms-text-size-adjust: 100%;
 }
 
+#emailimage {
+  margin-top: 25px;
+  margin: 0 auto;
+  width: 50%;
+}
+
+#emailform {
+  margin-top: 25px;
+  font-size: 1.5em;
+  color: #317eac;
+}
+
+#divemailimage{
+  margin-top: 25px;
+}
+
 body {
+  background: url('http://entrepadres.imujer.com/sites/entrepadres.imujer.com/files/Dibujos-para-bebes-recien-nacidos-1.jpg');
   margin: 0;
 }
 
@@ -2002,7 +2019,7 @@ output {
 
 .form-control {
   display: block;
-  width: 100%;
+  width: 25%;
   height: 38px;
   padding: 8px 12px;
   font-size: 14px;
