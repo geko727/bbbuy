@@ -1,4 +1,7 @@
-<% @coupon = Coupon.find(params[:id]) %>
-
+<% @coupon = Coupon.find_by_token(params[:token]) %>
+<% if @coupon.delivered != nil %>
+	<h1> Coupon already activated </h1>
+<% else %>
 <% @coupon.touch(:delivered)%>
-<h1> Coupon Activated </h1>
+	<h1> Coupon Activated </h1>
+<% end %> 
