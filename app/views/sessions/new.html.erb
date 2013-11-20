@@ -1,11 +1,12 @@
-<h5>Login</h5>
-
+<h1>BBBuy Coupons Admin</h1>
+<div class="well" id="login">
 <%= form_tag '/sessions' do %>
-        <%= label_tag :email %>
-        <%= text_field_tag :email %>
+        <%= label_tag :email , nil, :class=>"h3"%>
+        <%= email_field_tag :email, nil, :class=>"form-control", :id=>"emailtext"%>
         </br>
-        <%= label_tag :password %>
-        <%= password_field_tag :password %>
+        <%= label_tag :password , nil, :class=>"h3"%>
+        <%= password_field_tag :password, nil, :class=>"form-control", :id=>"emailtext" %>
         </br>
         <%= submit_tag "Login", class: 'btn btn-primary' %>
 <% end %>
+</div>

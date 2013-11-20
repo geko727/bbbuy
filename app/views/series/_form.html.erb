@@ -11,24 +11,25 @@
       </ul>
     </div>
   <% end %>
-
+<div class="well">
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.label :name , nil, :class=>"h4"%><br>
+    <%= f.text_field :name, :class=>"form-control", :id=>"emailtext" %>
   </div>
   <div class="field">
-    <%= f.label :value %><br>
-    <%= f.text_field :value %>
+    <%= f.label :value , nil, :class=>"h4"%><br>
+    <%= f.text_field :value , :class=>"form-control", :id=>"emailtext"%>
   </div>
   <div class="field">
-    <%= f.label :currency %><br>
-    <%= f.select :currency, [['MX','MX'],["USD","USD"]] %>
+    <%= f.label :currency , nil, :class=>"h4"%><br>
+    <%= f.select :currency, [['MX','MX'],["USD","USD"]] , :class=>"form-control", :id=>"emailtext"%>
   </div>
   <div class="field">
-    <%= label :coupons, "coupons" %><br>
-    <%= text_area :allcoupons, "allcoupons" %>
+    <%= label :coupons, "coupons", nil, :class=>"h4" %><br>
+    <%= text_area :allcoupons, "allcoupons", :class=>"form-control", :id=>"emailtext" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit%>
   </div>
 <% end %>
+</div>
