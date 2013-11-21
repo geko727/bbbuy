@@ -30,7 +30,7 @@
         <td><%= serie.coupons.count %></td>
         <td><%= serie.coupons.where(sent: nil).count %></td>
         <td><%= serie.active %></td>
-        <td><%= link_to 'Change', change_path(serie),method: :post%></td>
+        <td><%= link_to 'Change', change_path(serie),:method=>:post%></td>
         </tr>
     <% end %>
   </tbody>
