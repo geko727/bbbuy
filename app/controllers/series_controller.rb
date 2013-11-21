@@ -16,7 +16,6 @@ class SeriesController < ApplicationController
   def email
     @coup = Serie.find_by_name(params[:series][:name])
     @c = Coupon.where(recipient: params[:email][:email])
-    binding.pry
     if @c != [] 
       redirect_to email_path
     elsif @c == []
