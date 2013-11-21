@@ -2,6 +2,7 @@
 <% if @cup %>
 <%@cup.touch(:sent)%>
 <%@cup.update_column(:recipient, @email) %>
+<%@cup.update_column(:ip, @ip) %>
 <h1> This is your Coupon: <%= @cup.serial%> </h1>
 <%= link_to "Activate it!!!", activate_url(:token => @cup.token) %>
 
