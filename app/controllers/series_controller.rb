@@ -15,8 +15,13 @@ class SeriesController < ApplicationController
 
   def email
     @coup = Serie.find_by_name(params[:series][:name])
+    @c = Coupon.where(recipient: params[:email][:email])
     binding.pry
-    AppMailer.send_coupon_email(params[:email][:email], @coup).deliver
+    if @c != [] 
+      redirect_to email_path
+    elsif @c == []
+      AppMailer.send_coupon_email(params[:email][:email], @coup).deliver
+    end
   end
 
   # GET /series/1
