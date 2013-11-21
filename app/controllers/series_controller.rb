@@ -9,11 +9,13 @@ class SeriesController < ApplicationController
   end
 
   def emailpage
-    @series = Serie.all
+    @active = Serie.all
+    @series = @active.where(active: true)
   end
 
   def email
     @coup = Serie.find_by_name(params[:series][:name])
+    binding.pry
     AppMailer.send_coupon_email(params[:email][:email], @coup).deliver
   end
 
@@ -27,8 +29,15 @@ class SeriesController < ApplicationController
     end
   end
 
-  def activate
-    
+  def change
+    @series = Serie.find_by_id(params[:id])
+    @series.change_method
+    # binding.pry
+    redirect_to series_index_path
+  end
+
+
+  def activate    
   end
   # GET /series/new
   def new

@@ -12,4 +12,14 @@ class Serie < ActiveRecord::Base
 	    end
 	  end
 	end
+
+	def change_method
+		
+		if self.active == true
+			self.update_attributes(active: false)
+		elsif self.active == false
+			self.update_attributes(active: true)
+		end
+		
+	end
 end

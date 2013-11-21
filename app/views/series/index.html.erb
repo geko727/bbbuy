@@ -13,6 +13,7 @@
       <th>Currency</th>
       <th>Cupons</th>
       <th>Disponibility</th>
+      <th>Active</th>
       <th></th>
       <th></th>
       <th></th>
@@ -20,15 +21,17 @@
   </thead>
 
   <tbody>
-    <% @series.each do |series| %>
+    <% @series.each do |serie| %>
       <tr>
-        <td><%= link_to series.name, series %></td>
-        <td><%= series.created_at %></td>
-        <td><%= series.value %></td>
-        <td><%= series.currency %></td>
-        <td><%= series.coupons.count %></td>
-        <td><%= series.coupons.where(sent: nil).count %></td>
-      </tr>
+        <td><%= link_to serie.name, serie %></td>
+        <td><%= serie.created_at %></td>
+        <td><%= serie.value %></td>
+        <td><%= serie.currency %></td>
+        <td><%= serie.coupons.count %></td>
+        <td><%= serie.coupons.where(sent: nil).count %></td>
+        <td><%= serie.active %></td>
+        <td><%= link_to 'Change', change_path(serie),method: :post%></td>
+        </tr>
     <% end %>
   </tbody>
 </table>
