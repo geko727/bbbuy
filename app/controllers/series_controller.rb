@@ -15,12 +15,13 @@ class SeriesController < ApplicationController
 
   def email
     @ip = request.remote_ip
+    @ip2 = request.ip
     @coup = Serie.find_by_name(params[:series][:name])
     @c = Coupon.where(recipient: params[:email][:email])
     if @c != [] 
       redirect_to email_path
     elsif @c == []
-      AppMailer.send_coupon_email(params[:email][:email], @coup, @ip).deliver
+      AppMailer.send_coupon_email(params[:email][:email], @coup, @ip, @ip2).deliver
     end
   end
 
