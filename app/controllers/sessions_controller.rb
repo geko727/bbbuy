@@ -8,15 +8,17 @@ class SessionsController < ApplicationController
 		
 		if user && user.authenticate(params[:password])
 			session[:user_id] = user.id
-			redirect_to series_index_path, notice: "You are signed in"
+			flash[:success] = "You are singned in!!!"
+			redirect_to series_index_path
 		else
-			
+			flash[:danger] = "The email addresss or password you entered is not valid. Please try again."
 			redirect_to "/"
 		end
 	end
 
 	def destroy 
 		session[:user_id] = nil
+		flash[:danger] = "You are logged out!!!"
 		redirect_to "/"
 	end
 
