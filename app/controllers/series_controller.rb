@@ -5,7 +5,7 @@ class SeriesController < ApplicationController
   # GET /series
   # GET /series.json
   def index
-    @series = Serie.all
+    @series = Serie.find(:all,:order => 'id ASC')
   end
 
   def emailpage
