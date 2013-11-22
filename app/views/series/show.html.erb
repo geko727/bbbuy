@@ -3,7 +3,7 @@
 <p>
   <%= link_to "Exportar", series_path(format: "xls"), class: "btn btn-primary btn-sm"  %>
 </p>
-
+<div style="width:100%; height: 500px; overflow:auto;">
 <table class='table'>
   <thead>
     <tr>
@@ -12,8 +12,8 @@
       <th>Sent</th>
       <th>Delivered</th>
       <th>Recipient</th>
-      <th>Ip</th>
-      <th>Ip2</th>
+      <!--<th>Ip</th>
+      <th>Ip2</th>-->
       <th></th>
       <th></th>
       <th></th>
@@ -28,13 +28,13 @@
         <td><%= coupon.sent %></td>
         <td><%= coupon.delivered %></td>
         <td><%= coupon.recipient %></td>  
-        <td><%= coupon.ip %></td>   
-        <td><%= coupon.ip2 %></td>   
+        <!--<td><%= coupon.ip %></td>   
+        <td><%= coupon.ip2 %></td>-->   
       </tr>
     <% end %>
   </tbody>
 </table>
-
+</div>
 <br>
 
 <%= link_to 'Back', series_index_path %> | <%= link_to 'Log Out', sign_out_path %>

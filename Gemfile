@@ -49,7 +49,7 @@ group :development do
 	gem 'sqlite3'
 	gem 'letter_opener'
 	gem 'pry'
-  	gem 'pry-nav'
+  gem 'pry-nav'
 end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
