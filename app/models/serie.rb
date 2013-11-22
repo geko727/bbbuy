@@ -2,7 +2,7 @@ class Serie < ActiveRecord::Base
 	has_many :coupons
 
 	validates :name, presence: true
-	validates :value, presence: true
+	validates_numericality_of :value, :greater_than => 0
 
 	def self.to_csv(options = {})
 	  CSV.generate(options) do |csv|

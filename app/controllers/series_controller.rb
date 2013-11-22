@@ -17,12 +17,21 @@ class SeriesController < ApplicationController
     @ip = request.remote_ip
     @ip2 = request.ip
     @coup = Serie.find_by_name(params[:series][:name])
-    @c = Coupon.where(recipient: params[:email][:email])
-    if @c != [] 
-      flash[:danger] = "This email address has already been used"
+    @email = params[:email][:email]
+    @full_name = params[:full_name][:full_name]
+    valid_email = @email.match(/\b[A-Z0-9._%a-z\-]+@(?:[A-Z0-9a-z\-]+\.)+[A-Za-z]{2,4}\z/);
+
+    if valid_email
+      @c = Coupon.where(recipient: params[:email][:email])
+      if @c != [] 
+        flash[:danger] = "This email address has already been used"
+        redirect_to email_path
+      elsif @c == []
+        AppMailer.send_coupon_email(params[:email][:email], @coup, @ip, @ip2, @full_name).deliver
+      end
+    else
+      flash[:danger] = "This email address in invalid."
       redirect_to email_path
-    elsif @c == []
-      AppMailer.send_coupon_email(params[:email][:email], @coup, @ip, @ip2).deliver
     end
   end
 
@@ -44,7 +53,9 @@ class SeriesController < ApplicationController
   end
 
 
-  def activate    
+  def activate
+    @coupon = Coupon.find_by_token(params[:token])
+    redirect_to root_path unless @coupon 
   end
   # GET /series/new
   def new
@@ -64,14 +75,18 @@ class SeriesController < ApplicationController
     respond_to do |format|
       if @series.save
         @allcoup = params[:allcoupons][:allcoupons]
+        # if @allcoup == []
+        #   flash[:danger] = "You must put at least a coupon"
+        #   redirect_to new_series_path
+        # end
         @new = @allcoup.split(/\n/)
         @new.each do |x|
         x = x.gsub(/\r/," ")
         x = x.gsub(/\n/," ")
         Coupon.create :serial => x, :serie_id => @series.id 
         end
-        
-        format.html { redirect_to @series, notice: 'Serie was successfully created.' }
+        flash[:success] = 'Serie was successfully created.'
+        format.html { redirect_to @series}
         format.json { render action: 'show', status: :created, location: @series }
       else
         format.html { render action: 'new' }

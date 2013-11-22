@@ -4,7 +4,13 @@
 <%@cup.update_column(:recipient, @email) %>
 <%@cup.update_column(:ip, @ip) %>
 <%@cup.update_column(:ip2, @ip2) %>
-
+<%@cup.update_column(:full_name, @full_name) %>
+<% available = @cup.serie.coupons.where(sent: nil).count 
+	if available == 0 
+		@cup.serie.active = false
+		@cup.serie.save
+	end
+	%>
 <h1> This is your Coupon: <%= @cup.serial%> </h1>
 <%= link_to "Activate it!!!", activate_url(:token => @cup.token) %>
 

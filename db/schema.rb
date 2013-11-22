@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131121210620) do
+ActiveRecord::Schema.define(version: 20131122230645) do
 
   create_table "coupons", force: true do |t|
     t.string   "serial"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20131121210620) do
     t.string   "token"
     t.string   "ip"
     t.string   "ip2"
+    t.string   "full_name"
   end
 
   add_index "coupons", ["serie_id"], name: "index_coupons_on_serie_id"

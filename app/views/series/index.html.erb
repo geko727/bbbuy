@@ -11,9 +11,9 @@
       <th>Created</th>
       <th>Value</th>
       <th>Currency</th>
-      <th>Cupons</th>
-      <th>Disponibility</th>
-      <th>Active</th>
+      <th>Total Coupons</th>
+      <th>Available Coupons</th>
+      <th>Status</th>
       <th></th>
       <th></th>
       <th></th>
@@ -21,7 +21,11 @@
   </thead>
 
   <tbody>
-    <% @series.each do |serie| %>
+    <% @series.each do |serie|
+      available2 = serie.coupons.where(sent: nil).count
+     
+      status = serie.active ? 'Enabled' : 'Disabled'
+    %>
       <tr>
         <td><%= link_to serie.name, serie %></td>
         <td><%= serie.created_at %></td>
@@ -29,8 +33,10 @@
         <td><%= serie.currency %></td>
         <td><%= serie.coupons.count %></td>
         <td><%= serie.coupons.where(sent: nil).count %></td>
-        <td><%= serie.active %></td>
-        <td><%= link_to 'Change', change_path(serie),:method=>:post%></td>
+        <td class='<%=status.downcase%>'><%= status %></td>
+        <% unless available2 == 0 %>
+        <td><%= link_to 'Enable/Disable', change_path(serie),:method=>:post%></td>
+        <% end %>
         </tr>
     <% end %>
   </tbody>

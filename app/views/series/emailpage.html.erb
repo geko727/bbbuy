@@ -8,18 +8,32 @@
 </div>
 
 <div class="body" align="center" id="emailform">
+<% if @series == [] %>
+      <%= label :noseries, "There are no Coupons available" %>
+<% else %>
   <%= form_for(:series) do |f| %>
 
-    <div class="field">
+    <div class="field" id="inicio">
       <%= label :email, "email" %></br>
       <%= email_field :email, "email", :class=>"form-control"%>
     </div>
+    <div class="field" id="inicio">
+      <%= label :full_name, "Name:" %></br>
+      <%= text_field :full_name, "full_name", :class=>"form-control"%>
+    </div>
     <div class="field">
-      <%= f.label :series , "Choose a Serie", :class=>"h4"%><br>
-      <%= f.select :name, options_from_collection_for_select(@series, "name", "name"), :class=>"form-control", :id=>"emailtext"%>
+      <% if @series.count == 1 %>
+      <% n = @series.last %>
+        <%= label :name, "There is only one serie available: #{n.name}", :id=>"labelserie" %>
+        
+      <% else %>
+        <%= f.label :series , "Choose a Serie", :class=>"h4"%><br>
+        <%= f.select :name, options_from_collection_for_select(@series, "name", "name"), :class=>"form-control", :id=>"emailtext"%>
+      <% end %>
     </div>
     <div class="actions">
       <%= f.submit "send", :class => "btn btn-primary" %>
     </div>
   <% end %>
+  <% end %> 
 </div>

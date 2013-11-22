@@ -40,7 +40,7 @@ html {
 #emailimage {
   margin-top: 25px;
   margin: 0 auto;
-  width: 50%;
+  width: 40%;
 }
 
 #emailform {
@@ -179,6 +179,13 @@ select {
   text-transform: none;
 }
 
+.field#inicio{
+  width: 60%
+}
+
+#labelserie{
+  margin-top: 15px;
+}
 button,
 html input[type="button"],
 input[type="reset"],
@@ -7719,4 +7726,12 @@ td.visible-print {
 
 .affix {
   position: fixed;
+}
+
+.enabled{
+  color:green;
+}
+
+.disabled{
+  color:red;
 }
