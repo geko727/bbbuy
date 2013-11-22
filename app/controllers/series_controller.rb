@@ -19,6 +19,7 @@ class SeriesController < ApplicationController
     @coup = Serie.find_by_name(params[:series][:name])
     @c = Coupon.where(recipient: params[:email][:email])
     if @c != [] 
+      flash[:danger] = "This email address has already been used"
       redirect_to email_path
     elsif @c == []
       AppMailer.send_coupon_email(params[:email][:email], @coup, @ip, @ip2).deliver
