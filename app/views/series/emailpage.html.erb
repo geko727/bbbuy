@@ -24,7 +24,7 @@
     <div class="field">
       <% if @series.count == 1 %>
       <% n = @series.last %>
-        <%= label :seriename, "There is only one serie available: #{n.name}", :id=>"labelserie" %>
+        <%= label :seriename, "#{n.name}", :id=>"labelserie" %>
         <div class="hidden">
         <%= f.select :name, options_from_collection_for_select(@series, "name", "name"), :class=>"form-control", :id=>"emailtext"%>
         </div>

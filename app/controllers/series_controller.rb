@@ -20,8 +20,8 @@ class SeriesController < ApplicationController
     @email = params[:email][:email]
     @full_name = params[:full_name][:full_name]
     valid_email = @email.match(/\b[A-Z0-9._%a-z\-]+@(?:[A-Z0-9a-z\-]+\.)+[A-Za-z]{2,4}\z/);
-
-    if valid_email
+    valid_name = @full_name.match(/[\w]+([\s]+[\w]+){1}+/);
+    if valid_email && valid_name
       @c = Coupon.where(recipient: params[:email][:email])
       @n = Coupon.where(full_name: params[:full_name][:full_name])
       if @c != [] 
@@ -34,7 +34,7 @@ class SeriesController < ApplicationController
         AppMailer.send_coupon_email(params[:email][:email], @coup, @ip, @ip2, @full_name).deliver
       end
     else
-      flash[:danger] = "This email address in invalid."
+      flash[:danger] = "The email address or name is invalid."
       redirect_to email_path
     end
   end
@@ -83,10 +83,17 @@ class SeriesController < ApplicationController
       respond_to do |format|
       if @series.save
         @new = @allcoup.split(/\n/)
-        @new.each do |x|
-        x = x.gsub(/\r/," ")
-        x = x.gsub(/\n/," ")
-        Coupon.create :serial => x, :serie_id => @series.id 
+        y = []
+        @new.uniq.each do |x|
+          x = x.gsub(/\r/," ")
+          x = x.gsub(/\n/," ")
+          y << x.strip
+        end
+        y.uniq.each do |y|
+          validate_coupon = y.match(/[\w]{1}+/);
+          if validate_coupon  
+            Coupon.create :serial => y, :serie_id => @series.id 
+          end
         end
         flash[:success] = 'Serie was successfully created.'
         format.html { redirect_to @series}
