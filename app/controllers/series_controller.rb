@@ -70,15 +70,14 @@ class SeriesController < ApplicationController
   # POST /series.json
   def create
     @series = Serie.new(series_params)
-   
-
-    respond_to do |format|
+    @allcoup = params[:allcoupons][:allcoupons]
+    if @allcoup == ""
+      flash[:danger] = "You must put at least a coupon"
+      render new_series_path
+      return
+    else
+      respond_to do |format|
       if @series.save
-        @allcoup = params[:allcoupons][:allcoupons]
-        # if @allcoup == []
-        #   flash[:danger] = "You must put at least a coupon"
-        #   redirect_to new_series_path
-        # end
         @new = @allcoup.split(/\n/)
         @new.each do |x|
         x = x.gsub(/\r/," ")
@@ -93,6 +92,7 @@ class SeriesController < ApplicationController
         format.json { render json: @series.errors, status: :unprocessable_entity }
       end
     end
+   end
   end
 
   # PATCH/PUT /series/1

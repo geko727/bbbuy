@@ -160,6 +160,10 @@ legend {
   border: 0;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
 button,
 input,
 select,
