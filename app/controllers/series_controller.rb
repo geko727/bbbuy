@@ -23,10 +23,14 @@ class SeriesController < ApplicationController
 
     if valid_email
       @c = Coupon.where(recipient: params[:email][:email])
+      @n = Coupon.where(full_name: params[:full_name][:full_name])
       if @c != [] 
         flash[:danger] = "This email address has already been used"
         redirect_to email_path
-      elsif @c == []
+      elsif @n != []
+        flash[:danger] = "This full name has already been used"
+        redirect_to email_path
+      elsif @c == [] && @n == []
         AppMailer.send_coupon_email(params[:email][:email], @coup, @ip, @ip2, @full_name).deliver
       end
     else
