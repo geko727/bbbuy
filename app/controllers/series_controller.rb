@@ -74,6 +74,12 @@ class SeriesController < ApplicationController
   # POST /series.json
   def create
     @series = Serie.new(series_params)
+    @seriesname = Serie.where(name: @series.name)
+    if @seriesname != []
+      flash[:danger] = "This series name is already in use"
+      render new_series_path
+      return
+    end
     @allcoup = params[:allcoupons][:allcoupons]
     if @allcoup == ""
       flash[:danger] = "You must put at least a coupon"
