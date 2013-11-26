@@ -1,7 +1,7 @@
 class SeriesController < ApplicationController
   before_action :set_series, only: [:show, :edit, :update, :destroy]
   before_filter :require_user, only: [:show, :edit, :update, :destroy, :index, :new]
-  
+  #comment
   # GET /series
   # GET /series.json
   def index
