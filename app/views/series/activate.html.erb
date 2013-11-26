@@ -1,10 +1,13 @@
 <% if @coupon.delivered != nil %>
 	<div class="well" id="messages" align="center">
-		<h1> Coupon already activated  </h1>
+		<h1> Hola <%= @coupon.full_name%> </h1>
+		<h1> Tu cupon <%= @coupon.serial%>  ya ha sido activado anteriormente, saludos.</h1>
 	</div>
 <% else %>
 <% @coupon.touch(:delivered)%>
 	<div class="well" id="messages" align="center">
-		<h1> Coupon activated  </h1>
+		<h1> Hola <%= @coupon.full_name%> </h1>
+		<h1> Haz activado correctamente tu cupon <%= @coupon.serial%></h1>
+		<h1> ya puedes hacer uso de el dentro de nuestra tienda, saludos.</h1>
 	</div>
 <% end %> 

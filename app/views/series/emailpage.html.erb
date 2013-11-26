@@ -1,5 +1,5 @@
 <div class='header' align="center">
-    <h1>Bbbuy Coupons</h1>
+    <h1>Cupones BBBuy</h1>
 </div>
 
 
@@ -9,21 +9,21 @@
 
 <div class="body" align="center" id="emailform">
 <% if @series == [] %>
-      <%= label :noseries, "There are no Coupons available" %>
+      <%= label :noseries, "Lo sentimos, no hay cupones disponibles." %>
 <% else %>
   <%= form_for(:series) do |f| %>
 
     <div class="field" id="divemail">
       <%= label :email, "email:" %>
-      <%= email_field :email, "email", :class=>"form-control"%>
+      <%= email_field :email, "email", :class=>"form-control", :placeholder => "example@email.com"%>
     </div>
     <div class="field" id="divconf">
-      <%= label :emailconf, "email confirmation:" %>
-      <%= email_field :emailconf, "emailconf", :class=>"form-control"%>
+      <%= label :emailconf, "confirma tu email:" %>
+      <%= email_field :emailconf, "emailconf", :class=>"form-control", :placeholder => "example@email.com"%>
     </div>
     <div class="field" id="inicio">
-      <%= label :full_name, "Full Name:" %></br>
-      <%= text_field :full_name, "full_name", :class=>"form-control"%>
+      <%= label :full_name, "Nombre Completo:" %></br>
+      <%= text_field :full_name, "full_name", :class=>"form-control", :placeholder => "Nombre(s) Apellidos"%>
     </div>
     <div class="field">
       <% if @series.count == 1 %>
@@ -33,12 +33,12 @@
         <%= f.select :name, options_from_collection_for_select(@series, "name", "name"), :class=>"form-control", :id=>"emailtext"%>
         </div>
       <% else %>
-        <%= f.label :series , "Choose a Serie", :class=>"h4"%><br>
+        <%= f.label :series , "Elige una serie de cupones", :class=>"h4"%><br>
         <%= f.select :name, options_from_collection_for_select(@series, "name", "name"), :class=>"form-control", :id=>"emailtext"%>
       <% end %>
     </div>
     <div class="actions">
-      <%= f.submit "send", :class => "btn btn-primary" %>
+      <%= f.submit "Enviar", :class => "btn btn-primary" %>
     </div>
   <% end %>
   <% end %> 

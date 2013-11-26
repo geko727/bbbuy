@@ -11,8 +11,9 @@
 		@cup.serie.save
 	end
 	%>
-<h1> This is your Coupon: <%= @cup.serial%> </h1>
-<%= link_to "Activate it!!!", activate_url(:token => @cup.token) %>
+<h2> Estimado: <%= @cup.full_name%></h2>
+<h2> Ha elegido un Cupon de la serie: <%= @cup.serie.name%>, el codigo del cupon es: <%= @cup.serial%> </h2>
+<%= link_to "Activa tu Cupon ahora!!!", activate_url(:token => @cup.token)%>
 
 <%else%>
 <h1> No more Coupons </h1>
