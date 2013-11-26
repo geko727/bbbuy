@@ -43,6 +43,16 @@ html {
   width: 40%;
 }
 
+#divemail{
+  margin-left: 5%;
+  width: 700px;
+  float: left;
+}
+
+#divconf{
+  width: 700px
+}
+
 #emailform {
   margin-top: 25px;
   font-size: 1.5em;

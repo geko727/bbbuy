@@ -13,12 +13,16 @@
 <% else %>
   <%= form_for(:series) do |f| %>
 
-    <div class="field" id="inicio">
-      <%= label :email, "email" %></br>
+    <div class="field" id="divemail">
+      <%= label :email, "email:" %>
       <%= email_field :email, "email", :class=>"form-control"%>
     </div>
+    <div class="field" id="divconf">
+      <%= label :emailconf, "email confirmation:" %>
+      <%= email_field :emailconf, "emailconf", :class=>"form-control"%>
+    </div>
     <div class="field" id="inicio">
-      <%= label :full_name, "Name:" %></br>
+      <%= label :full_name, "Full Name:" %></br>
       <%= text_field :full_name, "full_name", :class=>"form-control"%>
     </div>
     <div class="field">
