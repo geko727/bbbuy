@@ -39,6 +39,11 @@ html {
       -ms-text-size-adjust: 100%;
 }
 
+
+#btncreate{
+  margin-left: 75%;
+}
+
 #bbico {
   width: 80px;
 }
@@ -47,6 +52,12 @@ html {
    display:inline;
    margin-left: 50px;
    margin-right: 50px;
+}
+
+#h3icon {
+   display:inline;
+   margin-left: 10px;
+   
 }
 
 #emailimage {
