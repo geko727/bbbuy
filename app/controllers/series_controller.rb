@@ -23,7 +23,7 @@ class SeriesController < ApplicationController
     valid_name = @full_name.match(/[\w]+([\s]+[\w]+){1}+/);
     @confirmation = params[:emailconf][:emailconf]
     if @email.split != @confirmation.split
-      flash[:danger] = "This email addresses don't macht"
+      flash[:danger] = "Las direcciones de correo no concuerdan."
       redirect_to email_path, email: params[:email][:email]
       return
     else
@@ -31,7 +31,7 @@ class SeriesController < ApplicationController
         @c = Coupon.where(recipient: params[:email][:email])
         #@n = Coupon.where(full_name: params[:full_name][:full_name])
         if @c != [] 
-          flash[:danger] = "This email address has already been used"
+          flash[:danger] = "Esta dirección de correo ya ha sido utilizada."
           redirect_to email_path
         #elsif @n != []
          # flash[:danger] = "This full name has already been used"
@@ -40,7 +40,7 @@ class SeriesController < ApplicationController
           AppMailer.send_coupon_email(params[:email][:email], @coup, @ip, @ip2, @full_name).deliver
         end
       else
-        flash[:danger] = "The email address or name is invalid. You must enter a valid email and your full name."
+        flash[:danger] = "La dirección de correo o el nombre no son validos. Debes ingresar un email valido y tu nombre completo."
         redirect_to email_path
       end
     end
