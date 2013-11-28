@@ -60,10 +60,15 @@ html {
    
 }
 
+#bblink{
+  font-size: 30px;
+  font-style: italic;
+}
+
 #emailimage {
   margin-top: 25px;
   margin: 0 auto;
-  width: 40%;
+  width: 50%;
 }
 
 #divemail{
