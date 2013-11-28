@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
 			redirect_to series_index_path
 		else
 			flash[:danger] = "The email addresss or password you entered is not valid. Please try again."
-			redirect_to "/"
+			redirect_to "/admin"
 		end
 	end
 
