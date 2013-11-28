@@ -27,7 +27,7 @@
   </thead>
 
   <tbody>
-    <% @series.coupons.each do |coupon| %>
+    <% @series.coupons.order("created_at desc").each do |coupon| %>
       <tr>
         <td><%= coupon.serie.name %></td>
         <td><%= coupon.serial %></td>
