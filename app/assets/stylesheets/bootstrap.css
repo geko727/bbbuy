@@ -67,13 +67,28 @@ html {
 }
 
 #divemail{
-  margin-left: 5%;
-  width: 700px;
   float: left;
+  margin-left: 5%;
+  width: 40%;
+  
+}
+
+#labelemail{
+  margin-left: 100px;
+}
+
+#email_email{
+  width: 40%;
+  margin-left: 100px;
+}
+
+#emailconf_emailconf{
+  width: 20%;
 }
 
 #divconf{
-  width: 700px
+  display: inline;
+  width: 40%;
 }
 
 #emailform {

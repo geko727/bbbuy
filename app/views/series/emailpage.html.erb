@@ -15,7 +15,7 @@
   <%= form_for(:series) do |f| %>
 
     <div class="field" id="divemail">
-      <%= label :email, "email:" %>
+      <%= label :email, "email:", :id=>"labelemail" %>
       <%= email_field :email, "email", :class=>"form-control", :placeholder => "example@email.com"%>
     </div>
     <div class="field" id="divconf">
