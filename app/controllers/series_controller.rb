@@ -18,16 +18,16 @@ class SeriesController < ApplicationController
     @ip2 = request.ip
     @coup = Serie.find_by_name(params[:series][:name])
     @email = params[:email][:email]
-    @full_name = params[:full_name][:full_name]
+    #@full_name = params[:full_name][:full_name]
     valid_email = @email.match(/\b[A-Z0-9._%a-z\-]+@(?:[A-Z0-9a-z\-]+\.)+[A-Za-z]{2,4}\z/);
-    valid_name = @full_name.match(/[\w]+([\s]+[\w]+){1}+/);
+    #valid_name = @full_name.match(/[\w]+([\s]+[\w]+){1}+/);
     @confirmation = params[:emailconf][:emailconf]
     if @email.split != @confirmation.split
       flash[:danger] = "Las direcciones de correo no concuerdan."
       redirect_to email_path, email: params[:email][:email]
       return
     else
-      if valid_email && valid_name
+      if valid_email #&& valid_name
         @c = Coupon.where(recipient: params[:email][:email])
         #@n = Coupon.where(full_name: params[:full_name][:full_name])
         if @c != [] 
@@ -40,7 +40,7 @@ class SeriesController < ApplicationController
           AppMailer.send_coupon_email(params[:email][:email], @coup, @ip, @ip2, @full_name).deliver
         end
       else
-        flash[:danger] = "La dirección de correo o el nombre no son validos. Debes ingresar un email valido y tu nombre completo."
+        flash[:danger] = "La dirección de correo no es valida. Debes ingresar un email valido."
         redirect_to email_path
       end
     end
