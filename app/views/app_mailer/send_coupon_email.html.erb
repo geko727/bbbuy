@@ -1,4 +1,4 @@
-<%@cup =  @coupon.coupons.find_by(sent: nil) %>
+<%@cup =  @coupon.coupons.order("created_at asc").find_by(sent: nil) %>
 <% if @cup %>
 <%@cup.touch(:sent)%>
 <%@cup.update_column(:recipient, @email) %>
