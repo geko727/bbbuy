@@ -8,9 +8,25 @@ class SeriesController < ApplicationController
     @series = Serie.find(:all,:order => 'id ASC')
   end
 
+  def lv
+  end
+
+  def validate_token
+    
+    @serie = Serie.where(token: params[:id])
+    if @serie == []
+      redirect_to "/lv"
+    else
+      redirect_to emailpage_path(token: params[:id])
+    end
+  end
+
   def emailpage
     @active = Serie.all
-    @series = @active.where(active: true)
+    @series = Serie.where(token: params[:token])
+    if @series == []
+      redirect_to "/lv"
+    end
   end
 
   def email
@@ -24,15 +40,14 @@ class SeriesController < ApplicationController
     @confirmation = params[:emailconf][:emailconf]
     if @email.split != @confirmation.split
       flash[:danger] = "Las direcciones de correo no concuerdan."
-      redirect_to email_path, email: params[:email][:email]
-      return
+      redirect_to emailpage_path(token: @coup.token)
     else
       if valid_email #&& valid_name
         @c = Coupon.where(recipient: params[:email][:email])
         #@n = Coupon.where(full_name: params[:full_name][:full_name])
         if @c != [] 
           flash[:danger] = "Esta dirección de correo ya ha sido utilizada."
-          redirect_to email_path
+          redirect_to emailpage_path(token: @coup.token)
         #elsif @n != []
          # flash[:danger] = "This full name has already been used"
           #redirect_to email_path
@@ -41,7 +56,7 @@ class SeriesController < ApplicationController
         end
       else
         flash[:danger] = "La dirección de correo no es valida. Debes ingresar un email valido."
-        redirect_to email_path
+        redirect_to emailpage_path(token: @coup.token)
       end
     end
   end
@@ -51,7 +66,7 @@ class SeriesController < ApplicationController
   def show
     respond_to do |format|
       format.html
-      format.csv { send_data Serie.to_csv}
+      format.csv { send_data Coupon.to_csv}
       format.xls # { send_data @products.to_csv(col_sep: "\t") }
     end
   end

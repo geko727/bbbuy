@@ -16,5 +16,12 @@
 <%= link_to "Activa tu Cupon ahora!!!", activate_url(:token => @cup.token)%>
 
 <%else%>
-<h1> No more Coupons </h1>
+
+<div>
+<span><img style="width: 80px;", src='https://s3.amazonaws.com/manuel_myflix/uploads/logo.png' /><h1 style="display: inline; margin-left: 10px; margin-bottom: 50px;">BBbuy Cupones</h1></span> 
+</div>
+</br>
+<h2> Lo sentimos, no hay cupones disponibles de la serie: <%= @coupon.name%> </h2>
+<h2> Se ha guardado tu correo para enviarte información de nuevas promociones.</h2>
+<h2> Saludos</h2>
 <%end%>

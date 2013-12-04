@@ -5,13 +5,15 @@ Bbbuy::Application.routes.draw do
   post 'series/new', to: 'series#create'
   get '/admin', to: "sessions#new"
   get 'sign_out', to: 'sessions#destroy'
-  get '/email', to: 'series#emailpage'
-  get '/', to: 'series#emailpage'
+  get '/email/:id', to: 'series#validate_token'
+  post '/emailpage', to: 'series#email'
   get '/activate', to: 'series#activate'
   post '/change/:id', to: 'series#change', as: :change
   post '/email', to: 'series#email'
-  post '/', to: "sessions#create"
-  root 'series#emailpage'
+  #post '/', to: "sessions#create"
+  get "/emailpage", to: 'series#emailpage'
+  root 'sessions#new'
+  get '/lv', to: "series#lv"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

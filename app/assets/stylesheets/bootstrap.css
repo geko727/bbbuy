@@ -43,10 +43,30 @@ html {
 
 #btncreate{
   margin-left: 75%;
+  
 }
 
 #bbico {
   width: 80px;
+}
+
+
+#serielink {
+  display: inline;
+}
+
+#h5icon {
+   display:inline;
+   margin-left: 50px;
+   margin-right: 50px;
+   color: blue;
+}
+
+
+#h2icon {
+   display:inline;
+   margin-left: 50px;
+   margin-right: 50px;
 }
 
 #h2icon {

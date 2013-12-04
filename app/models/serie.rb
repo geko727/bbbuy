@@ -3,6 +3,11 @@ class Serie < ActiveRecord::Base
 
 	validates :name, presence: true
 	validates_numericality_of :value, :greater_than => 0
+	before_create :generate_token
+
+  	def generate_token
+  		self.token = SecureRandom.urlsafe_base64
+  	end
 
 	def self.to_csv(options = {})
 	  CSV.generate(options) do |csv|
