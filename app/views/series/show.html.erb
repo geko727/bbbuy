@@ -35,7 +35,9 @@
         <td><%= coupon.serial %></td>
         <td><%= coupon.sent %></td>
         <td><%= coupon.delivered %></td>
-        <td><%= coupon.recipient %></td>  
+        <% if coupon.email %>
+        <td><%= coupon.email.email %></td>  
+        <% end %>
         <!--<td><%= coupon.full_name %></td>
         <td><%= coupon.ip %></td>   
         <td><%= coupon.ip2 %></td>-->   

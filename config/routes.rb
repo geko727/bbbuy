@@ -14,6 +14,8 @@ Bbbuy::Application.routes.draw do
   get "/emailpage", to: 'series#emailpage'
   root 'sessions#new'
   get '/lv', to: "series#lv"
+  get '/emailindex', to: "series#emailindex"
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

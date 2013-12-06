@@ -1,0 +1,32 @@
+<div class="header">
+<span><img id="bbico", src='/logo.png' /><h1 id="h2icon">Listing Emails</h1></span>
+</div>
+</br>
+</br>
+</br>
+
+<div style="width:100%; height: 500px; overflow:auto;">
+<table class='table'>
+  <thead>
+    <tr>
+
+      <th>Email</th>
+      <th>Serie</th>
+      <th>Coupon</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @emails.each do |email|%>
+      <tr>
+        <td><%= email.email %></td>
+        <% email.coupons.each do |cupon| %>
+          <td><%= cupon.serie.name %></td>
+          <td><%= cupon.serial %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<%= link_to 'Back', series_index_path %> | <%= link_to 'Log Out', sign_out_path %>

@@ -11,8 +11,12 @@ class SeriesController < ApplicationController
   def lv
   end
 
+
+  def emailindex
+    @emails = Email.find(:all,:order => 'id ASC')
+  end
+
   def validate_token
-    
     @serie = Serie.where(token: params[:id])
     if @serie == []
       redirect_to "/lv"
@@ -20,6 +24,26 @@ class SeriesController < ApplicationController
       redirect_to emailpage_path(token: params[:id])
     end
   end
+
+  def set_coupon(email, serie)
+    mail = Email.find_by_email(email)
+    @cup =  serie.coupons.order("created_at asc").find_by(sent: nil) 
+    if @cup 
+      @cup.touch(:sent)
+      @cup.update_column(:recipient, email)
+      @cup.update_column(:email_id, mail.id)
+      @available = @cup.serie.coupons.where(sent: nil).count 
+      if @available == 0 
+        @cup.serie.active = false
+        @cup.serie.save
+      end
+      AppMailer.send_coupon_email(email, @cup, serie).deliver
+    else
+      AppMailer.send_coupon_email(email, @cup, serie).deliver
+    end
+
+  end
+
 
   def emailpage
     @active = Serie.all
@@ -43,16 +67,24 @@ class SeriesController < ApplicationController
       redirect_to emailpage_path(token: @coup.token)
     else
       if valid_email #&& valid_name
-        @c = Coupon.where(recipient: params[:email][:email])
+        @c = @coup.coupons.where(recipient: params[:email][:email])
         #@n = Coupon.where(full_name: params[:full_name][:full_name])
         if @c != [] 
-          flash[:danger] = "Esta dirección de correo ya ha sido utilizada."
+          flash[:danger] = "Esta dirección de correo ya ha sido utilizada para esta serie."
           redirect_to emailpage_path(token: @coup.token)
         #elsif @n != []
          # flash[:danger] = "This full name has already been used"
           #redirect_to email_path
         elsif @c == [] 
-          AppMailer.send_coupon_email(params[:email][:email], @coup, @ip, @ip2, @full_name).deliver
+          @e = Email.find_by_email(@email)
+          if @e != nil
+            @email = @e.email
+            set_coupon(@email, @coup)
+          else
+            Email.create(email: @email)
+            set_coupon(@email, @coup)
+          end
+          #AppMailer.send_coupon_email().deliver
         end
       else
         flash[:danger] = "La dirección de correo no es valida. Debes ingresar un email valido."

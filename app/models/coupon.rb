@@ -1,5 +1,6 @@
 class Coupon < ActiveRecord::Base
   belongs_to :serie
+  belongs_to :email
   before_create :generate_token
 
   def generate_token

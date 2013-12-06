@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131203185451) do
+ActiveRecord::Schema.define(version: 20131204232311) do
 
   create_table "coupons", force: true do |t|
     t.string   "serial"
@@ -25,9 +25,16 @@ ActiveRecord::Schema.define(version: 20131203185451) do
     t.string   "ip"
     t.string   "ip2"
     t.string   "full_name"
+    t.integer  "email_id"
   end
 
   add_index "coupons", ["serie_id"], name: "index_coupons_on_serie_id"
+
+  create_table "emails", force: true do |t|
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "series", force: true do |t|
     t.string   "name"
