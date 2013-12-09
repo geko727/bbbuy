@@ -43,12 +43,19 @@ html {
 
 #btncreate{
   margin-left: 75%;
-  
 }
 
 #bbico {
   width: 80px;
 }
+
+#bbicomodal {
+  width: 40px;
+}
+
+
+
+
 
 
 #serielink {
@@ -69,11 +76,11 @@ html {
    margin-right: 50px;
 }
 
-#h2icon {
+#h2iconmodal {
    display:inline;
-   margin-left: 50px;
-   margin-right: 50px;
-}
+   font-size: 20px;
+   margin-left: 10px;
+ }
 
 #h3icon {
    display:inline;
@@ -6458,8 +6465,9 @@ button.close {
 }
 
 .modal {
+
   position: fixed;
-  top: 0;
+  top: 15%;
   right: 0;
   bottom: 0;
   left: 0;
@@ -6495,6 +6503,7 @@ button.close {
 }
 
 .modal-content {
+  width: 117%;
   position: relative;
   background-color: #ffffff;
   border: 1px solid #999999;

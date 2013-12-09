@@ -39,8 +39,41 @@
       <% end %>
     </div>
     <div class="actions">
-      <%= f.submit "Enviar", :class => "btn btn-primary" %>
+      <!--<%= f.submit "Enviar", :class => "btn btn-primary" %>-->
+      <a data-toggle="modal" href="#modalTerminos" class="btn btn-primary">Enviar</a>
     </div>
-  <% end %>
-  <% end %> 
-</div>
+ </div>
+
+<div id="modalTerminos" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <span><img id="bbicomodal", src='/logo.png' /><h1 id="h2iconmodal">BBbuy.mx Terminos de Privacidad</h1></span>
+      </div>
+      <div class="modal-body">
+      <iframe src="https://docs.google.com/a/codecery.com/file/d/0BwJfuVq-hHEQOWhNUlRPSjhzYjh4eTU2TzQ4cUhybkxmdk44/preview" width="640" height="480"></iframe>
+
+        </br></br>
+
+        -Al seleccionar "Continuar", aceptas recibir en tu correo nuestro Newsletter.</br></br>
+
+        -Al entrar a esta pagina estas aceptando el Aviso de Privacidad y los Términos 
+        y Condiciones de BBbuy.mx
+
+      </div>
+      <div class="modal-footer">
+        <form action='/series/emailpage' method='post'>
+                        <%= f.submit "Continuar", :class => "btn btn-primary" %>
+        </form>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<% end %>
+<% end %> 
+
+
+
+
+
