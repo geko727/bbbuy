@@ -1,14 +1,14 @@
 
 <% if @coupon.delivered != nil %>
 	<div class="well" id="messages" align="center">
-		<span><img id="bbico", src='/logo.png' /><h1 id="h2icon">Hola <%= @coupon.full_name%></h1></span>
+		<span><img id="bbico", src='/logo.png' /><h1 id="h2icon">Hola</h1></span>
 		<h1> Tu cupon <%= @coupon.serial%>  ya ha sido activado anteriormente, saludos.</h1>
 		<a href="http://www.bbbuy.mx/" id="bblink">BBbuy.mx >></a>
 	</div>
 <% else %>
 <% @coupon.touch(:delivered)%>
 	<div class="well" id="messages" align="center">
-		<span><img id="bbico", src='/logo.png' /><h1 id="h2icon">Hola <%= @coupon.full_name%></h1></span>
+		<span><img id="bbico", src='/logo.png' /><h1 id="h2icon">Hola</h1></span>
 		<h1> Haz activado correctamente tu cupon <%= @coupon.serial%></h1>
 		<h1> ya puedes hacer uso de el dentro de nuestra tienda, saludos.</h1>
 		<a href="http://www.bbbuy.mx/" id="bblink">BBbuy.mx >></a>

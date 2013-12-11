@@ -14,6 +14,11 @@ class SeriesController < ApplicationController
 
   def emailindex
     @emails = Email.find(:all,:order => 'id ASC')
+    respond_to do |format|
+      format.html
+      format.csv { send_data Email.to_csv}
+      format.xls # { send_data @products.to_csv(col_sep: "\t") }
+    end
   end
 
   def validate_token
@@ -54,8 +59,8 @@ class SeriesController < ApplicationController
   end
 
   def email
-    @ip = request.remote_ip
-    @ip2 = request.ip
+    #@ip = request.remote_ip
+    #@ip2 = request.ip
     @coup = Serie.find_by_name(params[:series][:name])
     @email = params[:email][:email]
     #@full_name = params[:full_name][:full_name]

@@ -5,7 +5,7 @@
 </br>
 <p>
   <%= link_to "Exportar", series_path(format: "csv"), class: "btn btn-primary btn-sm"  %>
-   <%= link_to "Exportar", series_path(format: "xls"), class: "btn btn-primary btn-sm"  %>
+   <!--<%= link_to "Exportar", series_path(format: "xls"), class: "btn btn-primary btn-sm"  %>-->
    
 
 </p>
@@ -19,9 +19,7 @@
       <th>Sent</th>
       <th>Delivered</th>
       <th>Recipient</th>
-      <!--<th>Name</th>
-      <th>Ip</th>
-      <th>Ip2</th>-->
+      
       <th></th>
       <th></th>
       <th></th>
@@ -38,9 +36,7 @@
         <% if coupon.email %>
         <td><%= coupon.email.email %></td>  
         <% end %>
-        <!--<td><%= coupon.full_name %></td>
-        <td><%= coupon.ip %></td>   
-        <td><%= coupon.ip2 %></td>-->   
+          
       </tr>
     <% end %>
   </tbody>

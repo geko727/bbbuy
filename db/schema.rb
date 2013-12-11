@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131204232311) do
+ActiveRecord::Schema.define(version: 20131211182149) do
 
   create_table "coupons", force: true do |t|
     t.string   "serial"
@@ -22,9 +22,6 @@ ActiveRecord::Schema.define(version: 20131204232311) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "token"
-    t.string   "ip"
-    t.string   "ip2"
-    t.string   "full_name"
     t.integer  "email_id"
   end
 
