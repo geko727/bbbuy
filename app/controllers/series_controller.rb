@@ -16,7 +16,7 @@ class SeriesController < ApplicationController
     @emails = Email.find(:all,:order => 'id ASC')
     respond_to do |format|
       format.html
-      format.csv { send_data Email.to_csv}
+      format.csv { send_data @emails.to_csv}
       format.xls # { send_data @products.to_csv(col_sep: "\t") }
     end
   end
@@ -103,7 +103,7 @@ class SeriesController < ApplicationController
   def show
     respond_to do |format|
       format.html
-      format.csv { send_data @series.coupons.to_csv}
+      format.csv { send_data @series.coupons.order("created_at asc").to_csv}
       format.xls # { send_data @products.to_csv(col_sep: "\t") }
     end
   end
