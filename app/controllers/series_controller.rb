@@ -98,7 +98,7 @@ class SeriesController < ApplicationController
   def show
     respond_to do |format|
       format.html
-      format.csv { send_data Coupon.to_csv}
+      format.csv { send_data @series.coupons.to_csv}
       format.xls # { send_data @products.to_csv(col_sep: "\t") }
     end
   end
